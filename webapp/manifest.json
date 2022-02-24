@@ -1,0 +1,75 @@
+{
+    "sap.app":{
+        "id": "nvidia.sd.sales",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "subTitle": "{{appSubTitle}}",
+        "tags":["fiori","fruits"],
+        "ach":"SAP-SD-SLS"
+    },
+    "sap.ui":{
+        "technology":"UI5",
+        "deviceTypes": ["desktop","tablet","phone"]
+    },
+    "sap.ui5":{
+        "dependencies":{
+            "minUI5Version": "1.90",
+            "libs" :{
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "models":{
+            "":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/mockdata/fruits.json"
+            },
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "rootView":{
+            "viewName": "nvidia.sd.sales.view.App",
+            "type":"XML",
+            "id": "idAppView"
+        },
+        "routing":{
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "path": "nvidia.sd.sales.view",
+                "controlId": "appCon"
+            },
+            "routes": [{
+                "name": "home",
+                "pattern": "",
+                "target": ["narendra", "fruits"]
+            },
+            {
+                "name": "route2",
+                "pattern": "detail",
+                "target": ["narendra", "modi"]
+            }
+        ],
+            "targets": {
+                "narendra": {
+                    "viewName": "View1",
+                    "controlAggregation": "masterPages",
+                    "viewId": "idView1"
+                },
+                "modi":{
+                    "viewName": "View2",
+                    "controlAggregation": "detailPages",
+                    "viewId": "idView2"
+                },
+                "fruits":{
+                    "viewName": "Empty",
+                    "controlAggregation": "detailPages",
+                    "viewId": "idEmpty"
+                }
+            }
+        }
+    }
+}

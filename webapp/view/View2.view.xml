@@ -1,0 +1,48 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" 
+		  xmlns:core="sap.ui.core"
+          controllerName="nvidia.sd.sales.controller.View2">
+    <Page title="{i18n>view2Title}" showNavButton="true" navButtonPress="onBack">
+        <!-- <Button text="Go Back" press="onBack"></Button> -->
+		<ObjectHeader intro="{healthBenefit}" title="{name}" number="{price}" numberUnit="{currency}" icon="{imageURL}"></ObjectHeader>
+		<IconTabBar>
+			<items>
+				<IconTabFilter text="More Info" icon="sap-icon://information">
+					<f:SimpleForm>
+						<f:content>
+							<Label text="Name"></Label>
+							<Text text="{name}"></Text>
+							<Label text="Price"></Label>
+							<Text text="{price}"></Text>
+							<Label text="Color"></Label>
+							<Text text="{color}"></Text>
+							<Label text="Health Benefits"></Label>
+							<Text text="{healthBenefit}"></Text>
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter text="Suppliers" icon="sap-icon://supplier"></IconTabFilter>
+				<IconTabFilter text="Cities" icon="sap-icon://home">
+					<Select items="{/cities}">
+						<core:Item key="{name}" text="{name}"></core:Item>
+					</Select>
+					<ComboBox items="{/cities}">
+						<core:Item key="{name}" text="{name}"></core:Item>
+					</ComboBox>
+					<MultiComboBox items="{/cities}" id="idMultiC">
+						<core:Item key="{name}" text="{name}"></core:Item>
+					</MultiComboBox>
+					<Button text="Print kar do" press="onPrintAll"></Button>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+        <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="Accept" press="confirmOrder" type="Accept" />
+				<Button text="Reject" type="Reject" />
+				<Button text="Edit" />
+				<Button text="Delete" />
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>
